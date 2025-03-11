@@ -1,0 +1,16 @@
+workflows:
+  android-build:
+    name: بناء Android
+    max_build_duration: 60
+    trigger:
+      branch:
+        - main
+    platform: android
+    android:
+      gradle:
+        gradle_version: 6.7.1
+        task: assembleDebug
+    publish:
+      app:
+        android:
+          artifact: build/app/outputs/flutter-apk/app-debug.apk
