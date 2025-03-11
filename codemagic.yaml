@@ -4,10 +4,12 @@ workflows:
     max_build_duration: 60
     environment:
       flutter: stable
-    steps:
-      - flutter/install
-      - flutter/pub-get
-      - flutter/build-android:
-          build_mode: debug
+    scripts:
+      - name: تثبيت الحزم
+        script: |
+          flutter pub get
+      - name: بناء التطبيق لنظام Android
+        script: |
+          flutter build apk --debug
     artifacts:
       - build/app/outputs/flutter-apk/app-debug.apk
