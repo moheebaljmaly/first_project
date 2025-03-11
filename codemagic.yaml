@@ -1,14 +1,13 @@
 workflows:
   android-build:
-    name: بناء Android
+    name: "بناء Android"
     max_build_duration: 60
-    trigger:
-      branches:
-        include:
-          - main
-    android:
-      gradle:
-        gradle_version: 6.7.1
-        task: assembleDebug
+    steps:
+      - name: "التثبيت"
+        run: |
+          flutter pub get
+      - name: "بناء Android"
+        run: |
+          flutter build apk --debug
     artifacts:
       - build/app/outputs/flutter-apk/app-debug.apk
